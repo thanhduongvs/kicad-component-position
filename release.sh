@@ -9,7 +9,23 @@ sed -i -e "s/VERSION/$version/g" metadata.json
 sed -i '/download_/d' metadata.json
 sed -i '/install_size/d' metadata.json
 
-zip -r $name ui/gui.py icon.png plugin.json main.py action.py version.py
+mkdir resources
+cp icon.png resources/
+
+mkdir -p plugins/ui
+cp icon.png plugins/
+cp plugin.json plugins/
+cp main.py plugins/
+cp action.py plugins/
+cp version.py plugins/
+cp ui/__init__.py plugins/ui/
+cp ui/gui.py plugins/ui/
+cp ui/gui.fbp plugins/ui/
+
+zip -r $name plugins resources metadata.json
+
+rm -rf plugins
+rm -rf resources
 
 sha=$(sha256sum $name | cut -d' ' -f1)
 size=$(du -b $name | cut -f1)
