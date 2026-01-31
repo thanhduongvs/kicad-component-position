@@ -13,7 +13,7 @@ from version import version
 class ComponentPosition(ComponentPositionDialog):
     def __init__(self):
         ComponentPositionDialog.__init__(self, None)
-        self.SetTitle('Component Position Exporter %s' % version)
+        self.SetTitle('Component Position Exporter v%s' % version)
         
         self.kicad = None
         self.board = None
