@@ -1,7 +1,7 @@
 import csv
 import os
 import sys
-import re  # Import re for Natural Sort
+import re
 import wx
 from kipy import KiCad
 from kipy.board import BoardLayer, BoardOriginType
@@ -10,6 +10,7 @@ from kipy.geometry import Vector2
 from kipy.proto.board.board_types_pb2 import FootprintMountingStyle
 from ui.gui import ComponentPositionDialog
 from version import version
+
 class ComponentPosition(ComponentPositionDialog):
     def __init__(self):
         ComponentPositionDialog.__init__(self, None)
@@ -112,7 +113,10 @@ class ComponentPosition(ComponentPositionDialog):
         project_path = self.board.document.project.path
         board_filename = os.path.splitext(self.board.document.board_filename)[0]
         output_filename = f"pos_{board_filename}.csv"
-        csv_filepath = os.path.join(project_path, output_filename)
+        assembly_dir = os.path.join(project_path, "assembly")
+        if not os.path.exists(assembly_dir):
+            os.makedirs(assembly_dir)
+        csv_filepath = os.path.join(assembly_dir, output_filename)
         print(f"Writing to: {csv_filepath}")
 
         # 1. Collect selected Custom Fields

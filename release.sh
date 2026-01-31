@@ -9,19 +9,7 @@ sed -i -e "s/VERSION/$version/g" metadata.json
 sed -i '/download_/d' metadata.json
 sed -i '/install_size/d' metadata.json
 
-#mkdir resources
-#cp icon/icon_64x64.png resources/
-#mv resources/icon_64x64.png resources/icon.png
-
-#mkdir plugins
-#cp __init__.py plugins/
-#cp icon.png plugins/
-#cp -r onekiwi/ plugins/
-
-zip -r $name ui icon.png plugin.json main.py action.py version.py
-
-#rm -rf plugins
-#rm -rf resources
+zip -r $name ui/gui.py icon.png plugin.json main.py action.py version.py
 
 sha=$(sha256sum $name | cut -d' ' -f1)
 size=$(du -b $name | cut -f1)

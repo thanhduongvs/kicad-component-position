@@ -1,6 +1,6 @@
 # Component Position Exporter for KiCad
 
-**Component Position Exporter** is a powerful KiCad PCB plugin designed to generate accurate and customizable Component Placement List (CPL) / Pick & Place files. 
+**Component Position Exporter** is a powerful KiCad PCB plugin designed to generate accurate and customizable Component Placement List / Pick & Place files.
 
 Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g., R2 comes before R10), smart **DNP (Do Not Populate)** handling, and the ability to include **Custom User Fields** (such as Manufacturer Part Numbers, LCSC IDs, etc.).
 
@@ -40,7 +40,7 @@ Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g.,
     * **Custom Fields:** Check the boxes for any additional data you want in the CSV (e.g., "Manufacturer").
     * **DNP:** Check to hide the DNP column (default includes it).
 4.  Click **Generate**.
-5.  The CSV file (`pos_your_board_name.csv`) will be saved in your project directory.
+5.  The CSV file (`assembly/pos_your_board_name.csv`) will be saved in your project directory.
 
 ## 📄 Output Format
 
@@ -69,4 +69,4 @@ The generated CSV includes the following columns:
 This project is open-source. Feel free to modify and distribute.
 
 ---
-*Plugin developed by [Your Name/Brand]*
+*Plugin developed by Thanh Duong*
