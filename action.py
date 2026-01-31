@@ -9,12 +9,11 @@ from kipy.board_types import Field
 from kipy.geometry import Vector2
 from kipy.proto.board.board_types_pb2 import FootprintMountingStyle
 from ui.gui import ComponentPositionDialog
-
+from version import version
 class ComponentPosition(ComponentPositionDialog):
     def __init__(self):
         ComponentPositionDialog.__init__(self, None)
-        version = '1.0'  # Update version
-        self.SetTitle('Component Position Exporter v%s' % version)
+        self.SetTitle('Component Position Exporter %s' % version)
         
         self.kicad = None
         self.board = None

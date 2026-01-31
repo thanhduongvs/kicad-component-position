@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import wx
-from component_position import ComponentPosition
+from action import ComponentPosition
 
 def main():
     app = wx.App()

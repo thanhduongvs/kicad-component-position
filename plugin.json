@@ -2,7 +2,7 @@
     "$schema": "https://go.kicad.org/api/schemas/v1",
     "identifier": "vn.thanhduongvs.component-position-exporter",
     "name": "Component Position Exporter",
-    "description": "Generates a Component Position (Pick & Place) CSV file with DNP support and Natural Sorting.",
+    "description": "Generates a Component Position CSV file with DNP support and Natural Sorting",
     "runtime": {
         "type": "python",
         "min_version": "3.9"
@@ -17,9 +17,8 @@
                 "pcb"
             ],
             "entrypoint": "main.py",
-            "icons-light": [
-                "icons/icon_24x24.png"
-            ]
+            "icons-light": ["icon.png"],
+            "icons-dark": ["icon.png"]
         }
     ]
 }
