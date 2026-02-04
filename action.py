@@ -8,7 +8,7 @@ from kipy.board import BoardLayer, BoardOriginType
 from kipy.board_types import Field
 from kipy.geometry import Vector2
 from kipy.proto.board.board_types_pb2 import FootprintMountingStyle
-from ui.gui import ComponentPositionDialog
+from gui import ComponentPositionDialog
 from version import version
 
 class ComponentPosition(ComponentPositionDialog):

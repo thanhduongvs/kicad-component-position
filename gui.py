@@ -125,4 +125,3 @@ class ComponentPositionDialog ( wx.Dialog ):
     def OnGenerate( self, event ):
         event.Skip()
 
-
