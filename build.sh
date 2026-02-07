@@ -22,11 +22,13 @@ install() {
 
     mkdir $FULL_PLUGIN
     mkdir $FULL_RESOURCE
-    cp icon.png $FULL_RESOURCE
+    cp icons/icon_64x64.png $FULL_RESOURCE/icon.png
     cp icon.png $FULL_PLUGIN
     cp plugin.json $FULL_PLUGIN
     cp main.py $FULL_PLUGIN
-    cp action.py $FULL_PLUGIN
+    cp kicad_pcb.py $FULL_PLUGIN
+    cp tablemodel.py $FULL_PLUGIN
+    cp window.py $FULL_PLUGIN
     cp version.py $FULL_PLUGIN
     cp gui.py $FULL_PLUGIN
     cp requirements.txt $FULL_PLUGIN
@@ -41,7 +43,9 @@ install_dev() {
     cp icon.png $FULL_DEV
     cp plugin.json $FULL_DEV
     cp main.py $FULL_DEV
-    cp action.py $FULL_DEV
+    cp kicad_pcb.py $FULL_DEV
+    cp tablemodel.py $FULL_DEV
+    cp window.py $FULL_DEV
     cp version.py $FULL_DEV
     cp gui.py $FULL_DEV
     cp requirements.txt $FULL_DEV
@@ -72,13 +76,15 @@ release() {
     sed -i '/install_size/d' metadata.json
 
     mkdir resources
-    cp icon.png resources/
+    cp icons/icon_64x64.png resources/icon.png
 
     mkdir -p plugins
     cp icon.png plugins/
     cp plugin.json plugins/
     cp main.py plugins/
-    cp action.py plugins/
+    cp kicad_pcb.py plugins/
+    cp tablemodel.py plugins/
+    cp window.py plugins/
     cp version.py plugins/
     cp gui.py plugins/
     cp requirements.txt plugins/

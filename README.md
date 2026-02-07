@@ -1,4 +1,8 @@
-# Component Position Exporter for KiCad
+# ![icon](icon.png) Component Position Exporter
+
+<img src="https://img.shields.io/badge/KiCad-v9-brightgreen?style=for-the-badge&logo=KiCad">
+<img src="https://img.shields.io/badge/kicad--python-v0.5.0-brightgreen?style=for-the-badge">
+<img src="https://img.shields.io/badge/PySide6-Qt-brightgreen?style=for-the-badge">
 
 **Component Position Exporter** is a powerful KiCad PCB plugin designed to generate accurate and customizable Component Placement List / Pick & Place files.
 
@@ -62,11 +66,7 @@ The generated CSV includes the following columns:
 ## ⚙️ Requirements
 
 * KiCad 9.0 or later (Tested on KiCad 9.0).
-* Python 3.9+ (bundled with KiCad).
-
-## 📝 License
-
-This project is open-source. Feel free to modify and distribute.
+* Python 3.10+ (bundled with KiCad).
 
 ---
-*Plugin developed by Thanh Duong*
+*Plugin developed by* **Thanh Duong**
