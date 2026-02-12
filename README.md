@@ -25,21 +25,19 @@ Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g.,
 
 ## 🛠️ Installation
 
-### 1. Installation via PCM (Recommended)
+### Via KiCad Plugin and Content Manager (Recommended)
 Add our custom repo to **the Plugin and Content Manager**, the URL is:
 `https://raw.githubusercontent.com/thanhduongvs/kicad-repository/main/repository.json`
 
 ![pcm](images/pcm.png)
 
-### 2. Installation via Source Code
-- Download the plugin source code.
+### Manual Installation
+- Download the plugin source code as **a .zip** file.
 - Locate your KiCad plugins folder:
   - **Windows:** `Documents\KiCad\9.0\plugins`
   - **Linux:** `~/.local/share/kicad/9.0/plugins`
   - **macOS:** `~/Documents/KiCad/9.0/plugins`
-- Create a folder named `component_position_exporter` inside the plugins directory.
-- Copy all plugin files (`main.py`, `__init__.py`, `metadata.json`, `ui/`, etc.) into that folder.
-- **Important:** Install required dependencies (`PySide6`, `shapely`, `qrcode`, `opencv-python`, `numpy`, `Pillow`) into KiCad's Python environment.
+- Extract the archive to the KiCad plugins directory
 - Restart KiCad / PCB Editor.
 
 ## 🖥️ Usage
