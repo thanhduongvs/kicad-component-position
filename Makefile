@@ -1,7 +1,3 @@
-venv:
-	python3 -m venv venv
-	source venv/bin/activate
-
 package:
 	@echo "install requirements"
 	pip install -r requirements.txt
@@ -10,8 +6,8 @@ designer:
 	@echo "Open Qt Designer"
 	pyside6-designer gui.ui
 
-ui:
-	@echo "Update UI"
+gui:
+	@echo "Update GUI"
 	pyside6-uic gui.ui -o gui.py
 
 test:

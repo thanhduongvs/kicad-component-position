@@ -1,6 +1,6 @@
 {
     "$schema": "https://go.kicad.org/api/schemas/v1",
-    "identifier": "vn.thanhduongvs.component-position-exporter",
+    "identifier": "vn.thanhduongvs.component-position",
     "name": "Component Position Exporter",
     "description": "Generates a Component Position CSV file with DNP support and Natural Sorting",
     "runtime": {
@@ -9,7 +9,7 @@
     },
     "actions": [
         {
-            "identifier": "component-position-exporter",
+            "identifier": "component-position",
             "name": "Component Position Exporter",
             "description": "Generates a Component Position CSV file with DNP support and Natural Sorting",
             "show-button": true,

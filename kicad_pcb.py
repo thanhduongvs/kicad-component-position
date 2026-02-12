@@ -164,4 +164,3 @@ class KiCadPCB:
         # Trả về tuple. Python sẽ so sánh phần tử thứ nhất trước (is_dnp),
         # nếu bằng nhau thì so sánh tiếp phần tử thứ hai (natural_key).
         return (is_dnp, natural_key)
-    

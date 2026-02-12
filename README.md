@@ -6,6 +6,8 @@
 
 Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g., R2 comes before R10), smart **DNP (Do Not Populate)** handling, and the ability to include **Custom User Fields** (such as Manufacturer Part Numbers, LCSC IDs, etc.).
 
+![Preview Screenshot](images/gui.png)
+
 ## 🚀 Key Features
 
 * **🔤 Natural Sorting:** * Sorts Reference Designators logically (Natural Sort Order).
@@ -21,18 +23,26 @@ Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g.,
     * Exports both **Metric (mm)** and **Imperial (mil)** units simultaneously.
 * **📋 Clean Output:** Generates a standard CSV format compatible with most SMT assembly houses (JLCPCB, PCBWay, etc.).
 
-## 📦 Installation
+## 🛠️ Installation
 
-1.  Download the plugin source code.
-2.  Locate your KiCad plugins folder:
-    * **Windows:** `Documents\KiCad\9.0\plugins`
-    * **Linux:** `~/.local/share/kicad/9.0/plugins`
-    * **macOS:** `~/Documents/KiCad/9.0/plugins`
-3.  Create a folder named `component_position_exporter` (or similar) inside the plugins directory.
-4.  Copy all plugin files (`main.py`, `__init__.py`, `metadata.json`, `ui/`, etc.) into that folder.
-5.  Restart KiCad / PCB Editor.
+### 1. Installation via PCM (Recommended)
+Add our custom repo to **the Plugin and Content Manager**, the URL is:
+`https://raw.githubusercontent.com/thanhduongvs/kicad-repository/main/repository.json`
 
-## 🛠 Usage
+![pcm](images/pcm.png)
+
+### 2. Installation via Source Code
+- Download the plugin source code.
+- Locate your KiCad plugins folder:
+  - **Windows:** `Documents\KiCad\9.0\plugins`
+  - **Linux:** `~/.local/share/kicad/9.0/plugins`
+  - **macOS:** `~/Documents/KiCad/9.0/plugins`
+- Create a folder named `component_position_exporter` inside the plugins directory.
+- Copy all plugin files (`main.py`, `__init__.py`, `metadata.json`, `ui/`, etc.) into that folder.
+- **Important:** Install required dependencies (`PySide6`, `shapely`, `qrcode`, `opencv-python`, `numpy`, `Pillow`) into KiCad's Python environment.
+- Restart KiCad / PCB Editor.
+
+## 🖥️ Usage
 
 1.  Open your PCB design in **KiCad PCB Editor**.
 2.  Click the **Component Position Exporter** icon on the toolbar (or find it under `Tools > External Plugins`).
@@ -61,10 +71,11 @@ The generated CSV includes the following columns:
 | **DNP** | Yes (if applicable) |
 | **[Custom Fields]** | Any extra fields selected in the GUI |
 
-## ⚙️ Requirements
+## 📦 Libraries Used
+This project relies on several powerful open-source libraries:
+ - [kicad-python](https://pypi.org/project/kicad-python/): KiCad API Python Bindings.
+ - [PySide6](https://pypi.org/project/PySide6/): The official Python module from the Qt for Python project, used for the graphical user interface.
 
-* KiCad 9.0 or later (Tested on KiCad 9.0).
-* Python 3.10+ (bundled with KiCad).
+## 📜 License and Credits
 
----
-*Plugin developed by* **Thanh Duong**
+Plugin code licensed under MIT, see `LICENSE` for more info.
