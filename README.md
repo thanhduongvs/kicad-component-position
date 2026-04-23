@@ -1,6 +1,6 @@
 # ![icon](icon.png) Component Position Exporter
 
-<img src="https://img.shields.io/badge/KiCad-v9-brightgreen?style=for-the-badge&logo=KiCad"> <img src="https://img.shields.io/badge/kicad--python-v0.5.0-brightgreen?style=for-the-badge"> <img src="https://img.shields.io/badge/PySide6-Qt-brightgreen?style=for-the-badge">
+<img src="https://img.shields.io/badge/KiCad-v10-brightgreen?style=for-the-badge&logo=KiCad"> <img src="https://img.shields.io/badge/kicad--python-v0.7.1-brightgreen?style=for-the-badge"> <img src="https://img.shields.io/badge/PySide6-Qt-brightgreen?style=for-the-badge">
 
 **Component Position Exporter** is a powerful KiCad PCB plugin designed to generate accurate and customizable Component Placement List / Pick & Place files.
 
@@ -34,9 +34,9 @@ Add our custom repo to **the Plugin and Content Manager**, the URL is:
 ### Manual Installation
 - Download the plugin source code as **a .zip** file.
 - Locate your KiCad plugins folder:
-  - **Windows:** `Documents\KiCad\9.0\plugins`
-  - **Linux:** `~/.local/share/kicad/9.0/plugins`
-  - **macOS:** `~/Documents/KiCad/9.0/plugins`
+  - **Windows:** `Documents\KiCad\10.0\plugins`
+  - **Linux:** `~/.local/share/kicad/10.0/plugins`
+  - **macOS:** `~/Documents/KiCad/10.0/plugins`
 - Extract the archive to the KiCad plugins directory
 - Restart KiCad / PCB Editor.
 
