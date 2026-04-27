@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(451, 723)
+        MainWindow.resize(425, 755)
         icon = QIcon()
         icon.addFile(u"icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
@@ -35,6 +35,63 @@ class Ui_MainWindow(object):
         self.gridLayout_8 = QGridLayout()
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.gridLayout_8.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
+        self.groupBoxYAxis = QGroupBox(self.centralwidget)
+        self.groupBoxYAxis.setObjectName(u"groupBoxYAxis")
+        self.gridLayout_3 = QGridLayout(self.groupBoxYAxis)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.radioIncreasesUp = QRadioButton(self.groupBoxYAxis)
+        self.radioIncreasesUp.setObjectName(u"radioIncreasesUp")
+        self.radioIncreasesUp.setChecked(True)
+
+        self.gridLayout_3.addWidget(self.radioIncreasesUp, 0, 0, 1, 1)
+
+        self.radioIncreasesDown = QRadioButton(self.groupBoxYAxis)
+        self.radioIncreasesDown.setObjectName(u"radioIncreasesDown")
+
+        self.gridLayout_3.addWidget(self.radioIncreasesDown, 0, 1, 1, 1)
+
+
+        self.gridLayout_8.addWidget(self.groupBoxYAxis, 2, 0, 1, 1)
+
+        self.groupBoxCustom = QGroupBox(self.centralwidget)
+        self.groupBoxCustom.setObjectName(u"groupBoxCustom")
+        self.gridLayout_5 = QGridLayout(self.groupBoxCustom)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.tableView = QTableView(self.groupBoxCustom)
+        self.tableView.setObjectName(u"tableView")
+
+        self.gridLayout_5.addWidget(self.tableView, 0, 0, 1, 1)
+
+
+        self.gridLayout_8.addWidget(self.groupBoxCustom, 4, 0, 1, 1)
+
+        self.groupBoxDNP = QGroupBox(self.centralwidget)
+        self.groupBoxDNP.setObjectName(u"groupBoxDNP")
+        self.gridLayout_4 = QGridLayout(self.groupBoxDNP)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.checkDNP = QCheckBox(self.groupBoxDNP)
+        self.checkDNP.setObjectName(u"checkDNP")
+
+        self.gridLayout_4.addWidget(self.checkDNP, 0, 0, 1, 1)
+
+
+        self.gridLayout_8.addWidget(self.groupBoxDNP, 3, 0, 1, 1)
+
+        self.gridLayout_6 = QGridLayout()
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.btnExport = QPushButton(self.centralwidget)
+        self.btnExport.setObjectName(u"btnExport")
+
+        self.gridLayout_6.addWidget(self.btnExport, 0, 0, 1, 1)
+
+        self.btnClose = QPushButton(self.centralwidget)
+        self.btnClose.setObjectName(u"btnClose")
+
+        self.gridLayout_6.addWidget(self.btnClose, 0, 1, 1, 1)
+
+
+        self.gridLayout_8.addLayout(self.gridLayout_6, 6, 0, 1, 1)
+
         self.groupBoxOrigin = QGroupBox(self.centralwidget)
         self.groupBoxOrigin.setObjectName(u"groupBoxOrigin")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
@@ -82,62 +139,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_8.addWidget(self.groupBoxXAxis, 1, 0, 1, 1)
 
-        self.groupBoxYAxis = QGroupBox(self.centralwidget)
-        self.groupBoxYAxis.setObjectName(u"groupBoxYAxis")
-        self.gridLayout_3 = QGridLayout(self.groupBoxYAxis)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.radioIncreasesUp = QRadioButton(self.groupBoxYAxis)
-        self.radioIncreasesUp.setObjectName(u"radioIncreasesUp")
-        self.radioIncreasesUp.setChecked(True)
+        self.tablePreview = QTableView(self.centralwidget)
+        self.tablePreview.setObjectName(u"tablePreview")
 
-        self.gridLayout_3.addWidget(self.radioIncreasesUp, 0, 0, 1, 1)
-
-        self.radioIncreasesDown = QRadioButton(self.groupBoxYAxis)
-        self.radioIncreasesDown.setObjectName(u"radioIncreasesDown")
-
-        self.gridLayout_3.addWidget(self.radioIncreasesDown, 0, 1, 1, 1)
-
-
-        self.gridLayout_8.addWidget(self.groupBoxYAxis, 2, 0, 1, 1)
-
-        self.groupBoxDNP = QGroupBox(self.centralwidget)
-        self.groupBoxDNP.setObjectName(u"groupBoxDNP")
-        self.gridLayout_4 = QGridLayout(self.groupBoxDNP)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.checkDNP = QCheckBox(self.groupBoxDNP)
-        self.checkDNP.setObjectName(u"checkDNP")
-
-        self.gridLayout_4.addWidget(self.checkDNP, 0, 0, 1, 1)
-
-
-        self.gridLayout_8.addWidget(self.groupBoxDNP, 3, 0, 1, 1)
-
-        self.groupBoxCustom = QGroupBox(self.centralwidget)
-        self.groupBoxCustom.setObjectName(u"groupBoxCustom")
-        self.gridLayout_5 = QGridLayout(self.groupBoxCustom)
-        self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.tableView = QTableView(self.groupBoxCustom)
-        self.tableView.setObjectName(u"tableView")
-
-        self.gridLayout_5.addWidget(self.tableView, 0, 0, 1, 1)
-
-
-        self.gridLayout_8.addWidget(self.groupBoxCustom, 4, 0, 1, 1)
-
-        self.gridLayout_6 = QGridLayout()
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.btnExport = QPushButton(self.centralwidget)
-        self.btnExport.setObjectName(u"btnExport")
-
-        self.gridLayout_6.addWidget(self.btnExport, 0, 0, 1, 1)
-
-        self.btnClose = QPushButton(self.centralwidget)
-        self.btnClose.setObjectName(u"btnClose")
-
-        self.gridLayout_6.addWidget(self.btnClose, 0, 1, 1, 1)
-
-
-        self.gridLayout_8.addLayout(self.gridLayout_6, 5, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.tablePreview, 5, 0, 1, 1)
 
 
         self.gridLayout_9.addLayout(self.gridLayout_8, 0, 0, 1, 1)
@@ -145,7 +150,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 451, 23))
+        self.menubar.setGeometry(QRect(0, 0, 425, 23))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -158,6 +163,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Component Position", None))
+        self.groupBoxYAxis.setTitle(QCoreApplication.translate("MainWindow", u"Y Axis:", None))
+        self.radioIncreasesUp.setText(QCoreApplication.translate("MainWindow", u"Increases up", None))
+        self.radioIncreasesDown.setText(QCoreApplication.translate("MainWindow", u"Increases down", None))
+        self.groupBoxCustom.setTitle(QCoreApplication.translate("MainWindow", u"Add custom fields:", None))
+        self.groupBoxDNP.setTitle(QCoreApplication.translate("MainWindow", u"Remove Components with DNP:", None))
+        self.checkDNP.setText(QCoreApplication.translate("MainWindow", u"Components with this field not empty will be ignored", None))
+        self.btnExport.setText(QCoreApplication.translate("MainWindow", u"Export to CSV", None))
+        self.btnClose.setText(QCoreApplication.translate("MainWindow", u"Close", None))
         self.groupBoxOrigin.setTitle(QCoreApplication.translate("MainWindow", u"Origin:", None))
         self.radioDrillOrigin.setText(QCoreApplication.translate("MainWindow", u"Drill Origin", None))
         self.radioGridOrigin.setText(QCoreApplication.translate("MainWindow", u"Grid Origin", None))
@@ -165,13 +178,5 @@ class Ui_MainWindow(object):
         self.groupBoxXAxis.setTitle(QCoreApplication.translate("MainWindow", u"X Axis:", None))
         self.radioIncreasesRight.setText(QCoreApplication.translate("MainWindow", u"Increases right", None))
         self.radioIncreasesLeft.setText(QCoreApplication.translate("MainWindow", u"Increases left", None))
-        self.groupBoxYAxis.setTitle(QCoreApplication.translate("MainWindow", u"Y Axis:", None))
-        self.radioIncreasesUp.setText(QCoreApplication.translate("MainWindow", u"Increases up", None))
-        self.radioIncreasesDown.setText(QCoreApplication.translate("MainWindow", u"Increases down", None))
-        self.groupBoxDNP.setTitle(QCoreApplication.translate("MainWindow", u"Remove Components with DNP:", None))
-        self.checkDNP.setText(QCoreApplication.translate("MainWindow", u"Components with this field not empty will be ignored", None))
-        self.groupBoxCustom.setTitle(QCoreApplication.translate("MainWindow", u"Add custom fields:", None))
-        self.btnExport.setText(QCoreApplication.translate("MainWindow", u"Export to CSV", None))
-        self.btnClose.setText(QCoreApplication.translate("MainWindow", u"Close", None))
     # retranslateUi
 

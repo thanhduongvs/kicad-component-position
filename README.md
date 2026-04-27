@@ -23,15 +23,7 @@ Unlike the default KiCad exporter, this plugin offers **Natural Sorting** (e.g.,
     * Exports both **Metric (mm)** and **Imperial (mil)** units simultaneously.
 * **📋 Clean Output:** Generates a standard CSV format compatible with most SMT assembly houses (JLCPCB, PCBWay, etc.).
 
-## 🛠️ Installation
-
-### Via KiCad Plugin and Content Manager (Recommended)
-Add our custom repo to **the Plugin and Content Manager**, the URL is:
-`https://raw.githubusercontent.com/thanhduongvs/kicad-repository/main/repository.json`
-
-![pcm](images/pcm.png)
-
-### Manual Installation
+## 🛠️ Manual Installation
 - Download the plugin source code as **a .zip** file.
 - Locate your KiCad plugins folder:
   - **Windows:** `Documents\KiCad\10.0\plugins`

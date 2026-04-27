@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>723</height>
+    <width>425</width>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,6 +24,78 @@
       <property name="sizeConstraint">
        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
       </property>
+      <item row="2" column="0">
+       <widget class="QGroupBox" name="groupBoxYAxis">
+        <property name="title">
+         <string>Y Axis:</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radioIncreasesUp">
+           <property name="text">
+            <string>Increases up</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QRadioButton" name="radioIncreasesDown">
+           <property name="text">
+            <string>Increases down</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QGroupBox" name="groupBoxCustom">
+        <property name="title">
+         <string>Add custom fields:</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <widget class="QTableView" name="tableView"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QGroupBox" name="groupBoxDNP">
+        <property name="title">
+         <string>Remove Components with DNP:</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="checkDNP">
+           <property name="text">
+            <string>Components with this field not empty will be ignored</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btnExport">
+          <property name="text">
+           <string>Export to CSV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="btnClose">
+          <property name="text">
+           <string>Close</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
       <item row="0" column="0">
        <widget class="QGroupBox" name="groupBoxOrigin">
         <property name="sizePolicy">
@@ -92,77 +164,8 @@
         </layout>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QGroupBox" name="groupBoxYAxis">
-        <property name="title">
-         <string>Y Axis:</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radioIncreasesUp">
-           <property name="text">
-            <string>Increases up</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QRadioButton" name="radioIncreasesDown">
-           <property name="text">
-            <string>Increases down</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QGroupBox" name="groupBoxDNP">
-        <property name="title">
-         <string>Remove Components with DNP:</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <widget class="QCheckBox" name="checkDNP">
-           <property name="text">
-            <string>Components with this field not empty will be ignored</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QGroupBox" name="groupBoxCustom">
-        <property name="title">
-         <string>Add custom fields:</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_5">
-         <item row="0" column="0">
-          <widget class="QTableView" name="tableView"/>
-         </item>
-        </layout>
-       </widget>
-      </item>
       <item row="5" column="0">
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btnExport">
-          <property name="text">
-           <string>Export to CSV</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btnClose">
-          <property name="text">
-           <string>Close</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QTableView" name="tablePreview"/>
       </item>
      </layout>
     </item>
@@ -173,7 +176,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
+     <width>425</width>
      <height>23</height>
     </rect>
    </property>

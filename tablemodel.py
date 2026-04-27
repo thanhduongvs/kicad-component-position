@@ -91,3 +91,38 @@ class TableModel(QAbstractTableModel):
             if section < len(self.headers):
                 return self.headers[section]
         return None
+
+class PreviewTableModel(QAbstractTableModel):
+    def __init__(self, headers=None, data=None):
+        super().__init__()
+        self._headers = headers or []
+        self._data = data or []
+
+    def rowCount(self, parent=QModelIndex()):
+        return len(self._data)
+
+    def columnCount(self, parent=QModelIndex()):
+        return len(self._headers)
+
+    def data(self, index, role):
+        if not index.isValid():
+            return None
+            
+        if role == Qt.DisplayRole:
+            row = index.row()
+            col = index.column()
+            if col < len(self._data[row]):
+                return str(self._data[row][col])
+        return None
+
+    def headerData(self, section, orientation, role):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            if section < len(self._headers):
+                return self._headers[section]
+        return None
+        
+    def update_data(self, new_headers, new_data):
+        self.beginResetModel()
+        self._headers = new_headers
+        self._data = new_data
+        self.endResetModel()
