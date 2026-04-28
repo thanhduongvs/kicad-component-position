@@ -80,17 +80,31 @@
       </item>
       <item row="6" column="0">
        <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btnExport">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="buttonBOM">
           <property name="text">
-           <string>Export to CSV</string>
+           <string>Export BOM</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btnClose">
+        <item row="0" column="3">
+         <widget class="QPushButton" name="buttonClose">
           <property name="text">
            <string>Close</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="buttonPosition">
+          <property name="text">
+           <string>Export Position</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="buttonFolder">
+          <property name="text">
+           <string>Open Folder</string>
           </property>
          </widget>
         </item>

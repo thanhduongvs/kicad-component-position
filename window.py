@@ -1,9 +1,11 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox, QHeaderView, QTableView
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QUrl
+from PySide6.QtGui import QDesktopServices
 from gui import Ui_MainWindow
 from tablemodel import TableModel, PreviewTableModel
 from version import version
 from kicad_pcb import KiCadPCB
+import os
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -40,8 +42,10 @@ class MainWindow(QMainWindow):
         self.ui.tableView.setAlternatingRowColors(True) # (Optional) Enable alternating row colors
 
         # Connect signals to slots
-        self.ui.btnExport.clicked.connect(self.button_export_clicked)
-        self.ui.btnClose.clicked.connect(self.button_close_clicked)
+        self.ui.buttonPosition.clicked.connect(self.button_position_clicked)
+        self.ui.buttonBOM.clicked.connect(self.button_bom_clicked)
+        self.ui.buttonFolder.clicked.connect(self.button_folder_clicked)
+        self.ui.buttonClose.clicked.connect(self.close)
         
         # Connect Radio Buttons
         self.tablemodel.dataChanged.connect(self.refresh_preview)
@@ -67,7 +71,7 @@ class MainWindow(QMainWindow):
             self.refresh_preview()
         else:
             self.ui.statusbar.showMessage(status)
-            QMessageBox.information(self, "Message", status)
+            QMessageBox.warning(self, "Warning", status)
 
     def refresh_preview(self):
         """Fetch data and display it on the Preview table"""
@@ -87,10 +91,7 @@ class MainWindow(QMainWindow):
         # Update the table interface
         self.preview_model.update_data(headers, data)
 
-    def button_close_clicked(self):
-        self.close()
-
-    def button_export_clicked(self):
+    def button_position_clicked(self):
         if not self.pcb.connected:
             QMessageBox.warning(self, "Warning", "Not connected to a KiCad PCB!")
             return
@@ -106,7 +107,7 @@ class MainWindow(QMainWindow):
             visual_order.append(logical_index)
 
         # Pass visual_order to the export function
-        status, message = self.pcb.export_file_csv(
+        status, message = self.pcb.export_position_csv(
             self.tablemodel.get_data_checked(),
             self.ui.checkDNP.isChecked(),
             self.ui.radioIncreasesLeft.isChecked(),
@@ -121,6 +122,30 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, "Success", f"CSV file exported successfully!\nPath: {message}")
         else:
             QMessageBox.critical(self, "Error", f"Failed to export file:\n{message}")
+
+    def button_bom_clicked(self):
+        if not self.pcb.connected:
+            QMessageBox.warning(self, "Warning", "Not connected to a KiCad PCB!")
+            return
+        status, message = self.pcb.export_bom_csv()
+
+        if status:
+            QMessageBox.information(self, "Success", f"CSV file exported successfully!\nPath: {message}")
+        else:
+            QMessageBox.critical(self, "Error", f"Failed to export file:\n{message}")
+
+    def button_folder_clicked(self):
+        if not self.pcb.connected:
+            QMessageBox.warning(self, "Warning", "Not connected to a KiCad PCB!")
+            return
+
+        project_path = self.pcb.board.document.project.path
+        assembly_dir = os.path.join(project_path, "assembly")
+
+        if os.path.exists(assembly_dir):
+            QDesktopServices.openUrl(QUrl.fromLocalFile(assembly_dir))
+        else:
+            QMessageBox.information(self, "Information", "The 'assembly' folder does not exist yet. Please Export first!")
 
     def on_origin_changed(self, checked):
         if not checked:

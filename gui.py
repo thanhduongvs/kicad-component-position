@@ -79,15 +79,25 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6 = QGridLayout()
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.btnExport = QPushButton(self.centralwidget)
-        self.btnExport.setObjectName(u"btnExport")
+        self.buttonBOM = QPushButton(self.centralwidget)
+        self.buttonBOM.setObjectName(u"buttonBOM")
 
-        self.gridLayout_6.addWidget(self.btnExport, 0, 0, 1, 1)
+        self.gridLayout_6.addWidget(self.buttonBOM, 0, 1, 1, 1)
 
-        self.btnClose = QPushButton(self.centralwidget)
-        self.btnClose.setObjectName(u"btnClose")
+        self.buttonClose = QPushButton(self.centralwidget)
+        self.buttonClose.setObjectName(u"buttonClose")
 
-        self.gridLayout_6.addWidget(self.btnClose, 0, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.buttonClose, 0, 3, 1, 1)
+
+        self.buttonPosition = QPushButton(self.centralwidget)
+        self.buttonPosition.setObjectName(u"buttonPosition")
+
+        self.gridLayout_6.addWidget(self.buttonPosition, 0, 0, 1, 1)
+
+        self.buttonFolder = QPushButton(self.centralwidget)
+        self.buttonFolder.setObjectName(u"buttonFolder")
+
+        self.gridLayout_6.addWidget(self.buttonFolder, 0, 2, 1, 1)
 
 
         self.gridLayout_8.addLayout(self.gridLayout_6, 6, 0, 1, 1)
@@ -169,8 +179,10 @@ class Ui_MainWindow(object):
         self.groupBoxCustom.setTitle(QCoreApplication.translate("MainWindow", u"Add custom fields:", None))
         self.groupBoxDNP.setTitle(QCoreApplication.translate("MainWindow", u"Remove Components with DNP:", None))
         self.checkDNP.setText(QCoreApplication.translate("MainWindow", u"Components with this field not empty will be ignored", None))
-        self.btnExport.setText(QCoreApplication.translate("MainWindow", u"Export to CSV", None))
-        self.btnClose.setText(QCoreApplication.translate("MainWindow", u"Close", None))
+        self.buttonBOM.setText(QCoreApplication.translate("MainWindow", u"Export BOM", None))
+        self.buttonClose.setText(QCoreApplication.translate("MainWindow", u"Close", None))
+        self.buttonPosition.setText(QCoreApplication.translate("MainWindow", u"Export Position", None))
+        self.buttonFolder.setText(QCoreApplication.translate("MainWindow", u"Open Folder", None))
         self.groupBoxOrigin.setTitle(QCoreApplication.translate("MainWindow", u"Origin:", None))
         self.radioDrillOrigin.setText(QCoreApplication.translate("MainWindow", u"Drill Origin", None))
         self.radioGridOrigin.setText(QCoreApplication.translate("MainWindow", u"Grid Origin", None))

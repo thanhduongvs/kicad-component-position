@@ -45,7 +45,7 @@ class KiCadPCB:
         self.fields = sorted(list(unique_fields))
         print(f"Found fields: {self.fields}")
     
-    def export_file_csv(self, custom_fields, dnpChecked, xLeftChecked, yUpChecked, gridChecked, drillChecked, column_order=None):
+    def export_position_csv(self, custom_fields, dnpChecked, xLeftChecked, yUpChecked, gridChecked, drillChecked, column_order=None):
         """
         Export data to a CSV file with all configurations from the GUI.
         :param column_order: List of indices representing the column order arranged by the user on the UI.
@@ -150,6 +150,128 @@ class KiCadPCB:
             
             return True, csv_filepath
 
+        except Exception as e:
+            return False, str(e)
+
+    def export_bom_csv(self):
+        project_path = self.board.document.project.path
+        board_filename = os.path.splitext(self.board.document.board_filename)[0]
+        output_filename = f"bom_{board_filename}.csv"
+        assembly_dir = os.path.join(project_path, "assembly")
+        
+        if not os.path.exists(assembly_dir):
+            os.makedirs(assembly_dir)
+        csv_filepath = os.path.join(assembly_dir, output_filename)
+
+        headers = [
+            'Item', 'Category', 'Value', 'References', 'Package', 'Description', 
+            'Quantity', 'Assembly', 'Manufacturer', 'Manufacturer Part', 
+            'Distributor', 'Distributor Part', 'Distributor Alternate', 
+            'Distributor Part Alternate', 'DNP'
+        ]
+
+        bom_data = {}
+
+        for footprint in self.footprints:
+            is_dnp = getattr(footprint.attributes, 'do_not_populate', False)
+
+            current_fp_fields = {field.name: field.text.value 
+                                for field in footprint.texts_and_fields if isinstance(field, Field)}
+            
+            category = current_fp_fields.get('Category', '')
+            
+            if category.strip().upper() == 'PCB':
+                continue
+
+            value = footprint.value_field.text.value
+            fp_name = footprint.definition.id.name
+            ref = footprint.reference_field.text.value
+            
+            key = (value, fp_name, is_dnp)
+
+            if key not in bom_data:
+                description = current_fp_fields.get('Description', current_fp_fields.get('Part Description', ''))
+
+                bom_data[key] = {
+                    'qty': 0,
+                    'refs': [],
+                    'value': value,
+                    'package': fp_name,
+                    'is_dnp': is_dnp,
+                    'Category': category,
+                    'Description': description,
+                    'Assembly': current_fp_fields.get('Assembly', ''),
+                    'Manufacturer': current_fp_fields.get('Manufacturer', ''),
+                    'Manufacturer Part': current_fp_fields.get('Manufacturer Part', ''),
+                    'Distributor': current_fp_fields.get('Distributor', ''),
+                    'Distributor Part': current_fp_fields.get('Distributor Part', ''),
+                    'Distributor Alternate': current_fp_fields.get('Distributor Alternate', ''),
+                    'Distributor Part Alternate': current_fp_fields.get('Distributor Part Alternate', '')
+                }
+
+            bom_data[key]['qty'] += 1
+            bom_data[key]['refs'].append(ref)
+
+        try:
+            normal_rows = []
+            dnp_rows = []
+
+            for (val, fp, is_dnp), info in bom_data.items():
+                sorted_refs = sorted(info['refs'], key=lambda x: [int(t) if t.isdigit() else t.lower() for t in re.split(r'(\d+)', x)])
+                refs_str = ", ".join(sorted_refs)
+                
+                row_data = [
+                    0, # Placeholder cho Item number
+                    info['Category'],
+                    info['value'],
+                    refs_str,
+                    info['package'],
+                    info['Description'],
+                    info['qty'],
+                    info['Assembly'],
+                    info['Manufacturer'],
+                    info['Manufacturer Part'],
+                    info['Distributor'],
+                    info['Distributor Part'],
+                    info['Distributor Alternate'],
+                    info['Distributor Part Alternate'],
+                    "Yes" if info['is_dnp'] else ""
+                ]
+
+                item_dict = {
+                    'category': info['Category'], 
+                    'value': info['value'], 
+                    'data': row_data
+                }
+
+                if info['is_dnp']:
+                    dnp_rows.append(item_dict)
+                else:
+                    normal_rows.append(item_dict)
+
+            normal_rows.sort(key=lambda x: (x['category'].lower(), x['value'].lower()))
+            dnp_rows.sort(key=lambda x: (x['category'].lower(), x['value'].lower()))
+
+            with open(csv_filepath, 'w', encoding="utf-8", newline='') as f:
+                out = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+                out.writerow(headers)
+
+                current_item = 1
+                
+                for item in normal_rows:
+                    item['data'][0] = current_item
+                    out.writerow(item['data'])
+                    current_item += 1
+
+                if normal_rows and dnp_rows:
+                    out.writerow([""] * len(headers))
+
+                for item in dnp_rows:
+                    item['data'][0] = current_item
+                    out.writerow(item['data'])
+                    current_item += 1
+            
+            return True, csv_filepath
         except Exception as e:
             return False, str(e)
 
