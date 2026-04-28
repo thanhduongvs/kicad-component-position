@@ -52,6 +52,3 @@ Standardized 15-column format optimized for sourcing and assembly:
 ## 📦 Libraries Used
 - [kicad-python](https://pypi.org/project/kicad-python/) - KiCad API Bindings.
 - [PySide6](https://pypi.org/project/PySide6/) - Qt framework for the modern GUI.
-
----
-Developed by **OneKiwi Technology**.
